@@ -1,1 +1,3 @@
 启动代码前需要先修改appconfig中的值
+
+运行 grunt  进行测试，测试js文件放在test目录中即可
