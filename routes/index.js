@@ -1,4 +1,3 @@
-
 /*
  * GET home page.
  */
@@ -9,8 +8,8 @@ var config=require("../appconfig").Config,
 exports.index = function(req, res){
 
      var SignInfo= SignTaobao(appkey,appsecret);
-      res.cookie("timestamp",SignInfo.timestamp);
-      res.cookie("sign",SignInfo.sign);
+     // res.cookie("timestamp",SignInfo.timestamp);
+      //res.cookie("sign",SignInfo.sign);
       res.render('index', { title: 'Express','AppKey':config.AppKey });
 
 };
