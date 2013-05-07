@@ -14,6 +14,7 @@
    等级<span class="level"></span>
   </div>
   <div class="top-login-btn-container"></div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" />
   <script>
       TOP.ui("login-btn", {
           container:".top-login-btn-container",
@@ -34,7 +35,7 @@
                    }else{
                       console.log(resp)
             
-                      $("#taouser #avatar").attr("src",resp.user.avatar);
+                      jQuery("#taouser #avatar").attr("src",resp.user.avatar);
             }
      
   })
