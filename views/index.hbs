@@ -37,6 +37,7 @@
                       console.log(resp)
             
                       jQuery("#taouser #avatar").attr("src",resp.user.avatar);
+                        jQuery("#taouser .nick").html(resp.user.nick);
             }
      
   })
