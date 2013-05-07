@@ -6,7 +6,7 @@
 </head>
 <body>
   Hello:{{title}}
-  <div id="taouser" style="display:none">
+  <div id="taouser"  >
    头像:<img id="avatar" />
    昵称:<span class="nick"></span>
    性别:<span class="sex"></span>
@@ -33,6 +33,7 @@
                       return false;
                    }else{
                       console.log(resp)
+            
                       $("#taouser #avatar").attr("src",resp.user.avatar);
             }
      
