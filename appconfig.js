@@ -6,6 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 exports.Config={
-   AppKey:" ",
-    AppSecret:" "
+   AppKey:"21494783",
+    AppSecret:"a1c7b03c37791969c049288f0a02ca2f"
 };
