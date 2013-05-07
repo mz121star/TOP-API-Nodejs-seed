@@ -8,7 +8,7 @@
 <body>
   Hello:{{title}}
   <div id="taouser"  >
-   头像:<img id="avatar" />
+   头像:<img id="avatar" width="50"/>
    昵称:<span class="nick"></span>
    性别:<span class="sex"></span>
    ID:<span class="id"></span>
@@ -38,6 +38,10 @@
             
                       jQuery("#taouser #avatar").attr("src",resp.user.avatar);
                         jQuery("#taouser .nick").html(resp.user.nick);
+                    jQuery("#taouser .level").html(resp.user.vip_info);
+                jQuery("#taouser .sex").html(resp.user.sex);
+                jQuery("#taouser .id").html(resp.user.user_id);
+
             }
      
   })
