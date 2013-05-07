@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>淘拍档</title>
+    <script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey={{AppKey}}"></script>
+</head>
+<body>
+  Hello:{{title}}
+  <div class="top-login-btn-container"></div>
+  <script>
+      TOP.ui("login-btn", {
+          container:".top-login-btn-container",
+          type:"1,1",
+          callback:{
+              login:function(user){alert(user)},
+              logout:function(){}
+          }
+      });
+  </script>
+</body>
+</html>
