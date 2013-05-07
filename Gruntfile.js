@@ -15,10 +15,15 @@ module.exports = function(grunt) {
                 options: {
                     reporter: 'nyan'
                 }
+            },
+            doc: {
+                options: {
+                    reporter: 'doc'
+                }
             }
         }
     });
     grunt.loadNpmTasks('grunt-mocha-cli');
-    grunt.registerTask('test', ['mochacli:spec']);
-    grunt.registerTask('default', ['mochacli:spec']);
+    grunt.registerTask('test', ['mochacli:doc']);
+    grunt.registerTask('default', ['mochacli:doc']);
 };
