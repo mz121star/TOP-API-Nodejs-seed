@@ -6,16 +6,38 @@
 </head>
 <body>
   Hello:{{title}}
+  <div id="taouser" style="display:none">
+   头像:<img id="avatar" />
+   昵称:<span class="nick"></span>
+   性别:<span class="sex"></span>
+   ID:<span class="id"></span>
+   等级<span class="level"></span>
+  </div>
   <div class="top-login-btn-container"></div>
   <script>
       TOP.ui("login-btn", {
           container:".top-login-btn-container",
           type:"1,1",
           callback:{
-              login:function(user){alert(user)},
+              login:function(user){Ready();},
               logout:function(){}
           }
       });
+      var function=Ready(){
+            TOP.api('rest', 'get',{
+                     method:'taobao.user.buyer.get ',
+                     fields:'user_id,nick,sex,buyer_credit,avatar,has_shop,vip_info'
+                    },function(resp){
+                  if(resp.error_response){
+                       alert('taobao.taobaoke.widget.items.convert接口获取商品信息品失败!'+resp.error_response.msg);
+                      return false;
+                   }else{
+                      console.log(resp)
+                      $("#taouser #avatar").attr("src",resp.user.avatar);
+            }
+     
+  })
+      }
   </script>
 </body>
 </html>
