@@ -7,6 +7,14 @@
   },
   "dependencies": {
     "express": "3.2.2",
-      "hbs":"*"
+    "hbs": "*"
+  },
+  "devDependencies": {
+
+      "should": "*",
+      "chai": "*",
+      "mocha": "*",
+      "grunt": "~0.4.1",
+       "grunt-mocha-cli": "~1.0.5"
   }
 }

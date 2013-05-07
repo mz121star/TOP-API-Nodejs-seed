@@ -22,8 +22,9 @@ var SignByHmacMd5 = function (message, secret) {
 
     var hmac = crypto.createHmac("md5", secret);
     var result= hmac.update(message).digest('hex');
-
+    result=result.toUpperCase();
     return result;
 }
 
 exports.SignTaobao=Sign;
+exports.SignByHmacMd5=SignByHmacMd5;
