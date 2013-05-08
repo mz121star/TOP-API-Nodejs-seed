@@ -8,7 +8,8 @@ module.exports = function(grunt) {
             },
             spec: {
                 options: {
-                    reporter: 'spec'
+                    reporter: 'spec',
+                    timeout:10000
                 }
             },
             nyan: {
@@ -24,6 +25,6 @@ module.exports = function(grunt) {
         }
     });
     grunt.loadNpmTasks('grunt-mocha-cli');
-    grunt.registerTask('test', ['mochacli:doc']);
+    grunt.registerTask('test', ['mochacli:spec']);
     grunt.registerTask('default', ['mochacli:doc']);
 };

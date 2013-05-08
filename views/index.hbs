@@ -2,50 +2,53 @@
 <html>
 <head>
     <title>淘拍档</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey={{AppKey}}"></script>
 </head>
 <body>
-  Hello:{{title}}
-  <div id="taouser"  >
-   头像:<img id="avatar" width="50"/>
-   昵称:<span class="nick"></span>
-   性别:<span class="sex"></span>
-   ID:<span class="id"></span>
-   等级<span class="level"></span>
-  </div>
-  <div class="top-login-btn-container"></div>
+Hello:{{title}}
+<div id="taouser">
+    头像:<img id="avatar" width="50"/>
+    昵称:<span class="nick"></span>
+    性别:<span class="sex"></span>
+    ID:<span class="id"></span>
+    等级<span class="level"></span>
+</div>
+<div class="top-login-btn-container"></div>
 
-  <script>
-      TOP.ui("login-btn", {
-          container:".top-login-btn-container",
-          type:"1,1",
-          callback:{
-              login:function(user){Ready();},
-              logout:function(){}
-          }
-      });
-      var Ready=function(){
-            TOP.api('rest', 'get',{
-                     method:'taobao.user.buyer.get ',
-                     fields:'user_id,nick,sex,buyer_credit,avatar,has_shop,vip_info'
-                    },function(resp){
-                  if(resp.error_response){
-                       alert('taobao.taobaoke.widget.items.convert接口获取商品信息品失败!'+resp.error_response.msg);
-                      return false;
-                   }else{
-                      console.log(resp)
-            
-                      jQuery("#taouser #avatar").attr("src",resp.user.avatar);
-                        jQuery("#taouser .nick").html(resp.user.nick);
-                    jQuery("#taouser .level").html(resp.user.vip_info);
+<script>
+    TOP.ui("login-btn", {
+        container:".top-login-btn-container",
+        type:"1,1",
+        callback:{
+            login:function (user) {
+                Ready();
+            },
+            logout:function () {
+            }
+        }
+    });
+    var Ready = function () {
+        TOP.api('rest', 'get', {
+            method:'taobao.user.buyer.get ',
+            fields:'user_id,nick,sex,buyer_credit,avatar,has_shop,vip_info'
+        }, function (resp) {
+            if (resp.error_response) {
+                alert('taobao.taobaoke.widget.items.convert接口获取商品信息品失败!' + resp.error_response.msg);
+                return false;
+            } else {
+                console.log(resp)
+
+                jQuery("#taouser #avatar").attr("src", resp.user.avatar);
+                jQuery("#taouser .nick").html(resp.user.nick);
+                jQuery("#taouser .level").html(resp.user.vip_info);
                 jQuery("#taouser .sex").html(resp.user.sex);
                 jQuery("#taouser .id").html(resp.user.user_id);
 
             }
-     
-  })
-      }
-  </script>
+
+        })
+    }
+</script>
 </body>
 </html>

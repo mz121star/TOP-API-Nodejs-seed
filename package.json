@@ -10,7 +10,7 @@
     "hbs": "*"
   },
   "devDependencies": {
-
+     "http-post":"*",
       "should": "*",
       "chai": "*",
       "mocha": "*",
