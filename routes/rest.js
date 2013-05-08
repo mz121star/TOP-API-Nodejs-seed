@@ -1,4 +1,4 @@
 exports.api = function(req, res){
 
-    res.send("Welcome invoke the RestAPI");
+    res.send("Hello"+req.body.name);
 };

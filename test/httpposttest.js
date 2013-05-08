@@ -1,10 +1,10 @@
 var http = require('http');
 http.post = require('http-post');
 var assert = require("assert");
-describe('HTTP-Post', function () {
+describe('httpposttest', function () {
     var html = "23";
     beforeEach(function (done) {
-        http.post('http://du.miaozhuang.net/rest', { name:'Sam', email:'sam@emberlabs.org' }, function (res) {
+        http.post('http://localhost:3002/rest', { name:'Sam', email:'sam@emberlabs.org' }, function (res) {
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
                 html = chunk;
@@ -16,8 +16,8 @@ describe('HTTP-Post', function () {
     })
     it('#post() ', function (done) {
 
-        html.should.include("baidu");
-
+       assert.equal("HelloSam",html);
+        done();
     });
 
 })

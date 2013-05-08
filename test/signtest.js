@@ -1,7 +1,7 @@
 var assert = require("assert");
 
 SignByHmacMd5=require("../util/sign").SignByHmacMd5;
-describe('TaoBao API', function(){
+describe('signtest', function(){
     describe('Sign', function(){
         it('SignByHmacMd5 ', function(){
             var SignInfo= SignByHmacMd5("12hello","Zshd12HMhaziUNXI");
