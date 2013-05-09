@@ -7,6 +7,7 @@ var express = require('express')
     , user = require('./routes/user')
     , rest = require('./routes/rest')
     , http = require('http')
+     ,SDK=require('./SDK/index')
     , path = require('path');
 routes.successRoute=require('./routes/success');
 routes.main=require('./routes/main');
@@ -38,7 +39,7 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/success',routes.successRoute.index)
 app.get('/main',routes.main.index)
-app.post('/rest', rest.api);
+app.post('/rest', SDK.index);
 
 
 http.createServer(app).listen(app.get('port'), function () {

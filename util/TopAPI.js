@@ -6,20 +6,18 @@ var http = require('http'),
     querystring = require('querystring');
 
 
-var Post=function(method,clientsession,params){
-
-}
+var Execute;
 /**
  *
  * @param url Container Url
  * @param appkey
  * @param appSecret
- * @param method request api
- * @param session client session
+  * @param session client session
+  * @param method request api
  * @param params
  * @constructor
  */
-var PostAPI = function (url, appkey, appSecret, method, session, params, callback) {
+var PostAPI = function (url, appkey, appSecret, session, method,  params, callback) {
     _.extend(params, {
         app_key:appkey,
         method:method,
@@ -66,7 +64,13 @@ var HTTPPost = function (host, path, port, data, callback) {
         // console.log('HEADERS: ' + JSON.stringify(res.headers));
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
-            callback(chunk);
+            result+=chunk;
+        });
+        res.on('end', function (chunk) {
+
+            console.log("over:"+result);
+            callback(result);
+
         });
     });
 
@@ -117,3 +121,4 @@ exports.PostAPI = PostAPI;
 exports.HashSort = HashSort;
 exports.CreateSign = CreateSign;
 exports.HTTPPost = HTTPPost;
+exports.Execute=Execute;

@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>商铺信息</title>
+    <title>{{title}}</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!--<script type="text/javascript" src="js/handlebars.js"></script>-->
 </head>
 <body>
-   {{result}}
+
+    <div id="content">
+
+
+    </div>
+
+  <script type="text/javascript">
+console.log({{result}})
+      //items= $.parseJSON(items);
+
+      $.post("/rest",function(data){
+
+          var data= $.parseJSON(data);
+
+         /* var source   = $("#entry-template").html();
+          var template = Handlebars.compile(source);
+          var context = data;
+          var html    = template(context);
+          $("#entry-template").html(html);*/
+      })
+  </script>
+
 </body>
 </html>
