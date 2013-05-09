@@ -1,4 +1,5 @@
 exports.api = function(req, res){
 
-    res.send("Hello"+req.body.name);
+    console.log(req.body);
+    res.send("Hello"+req.body.miao);
 };

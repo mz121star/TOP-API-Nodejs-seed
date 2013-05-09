@@ -1,3 +1,4 @@
+/*
 var http = require('http');
 http.post = require('http-post');
 var assert = require("assert");
@@ -20,4 +21,4 @@ describe('httpposttest', function () {
         done();
     });
 
-})
+})*/
