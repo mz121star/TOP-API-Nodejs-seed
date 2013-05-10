@@ -4,29 +4,60 @@
     <title>{{title}}</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <!--<script type="text/javascript" src="js/handlebars.js"></script>-->
+    <style>
+        .template_content {
+            display: none
+        }
+
+        #content .item {
+            float: left;
+            margin: 3px;
+            background-color: #dddddd
+        }
+    </style>
 </head>
 <body>
 
-    <div id="content">
-
-
+<div id="content" class="template_content">
+    <div class='item'>
+        <em>[title]</a></em>
+        <img width='100' height='100' src='[pic_url]'/>
+        <a href="#">[num_iid]</a>
     </div>
+</div>
 
-  <script type="text/javascript">
-console.log({{result}})
-      //items= $.parseJSON(items);
+<script type="text/javascript">
 
-      $.post("/rest",function(data){
+    var MTemplate = function (ele, data) {
+        var matchkey = /\[[A-Za-z0-9_-]+\]/gmi;
+        var html = $(ele).html(), _html;
+        var r = html.match(matchkey);
+        var result = "";
+        $.each(data, function (index, item) {
+            var _temp = item, flag = true;
+            $.each(r, function (i, o) {
+                var _key = o.replace("[", "").replace("]", "");
+                if (flag)
+                    _html = html.replace(o, _temp[_key]);
+                else
+                    _html = _html.replace(o, _temp[_key]);
+                flag = false;
+            })
 
-          var data= $.parseJSON(data);
+            result += _html;
+        })
+        $(ele).html(result);
+        $(ele).css("display", "block");
+    }
+    var options = {fields: "approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_time,price,has_discount,has_invoice,has_warranty,has_showcase, modified,delist_time,postage_id,seller_cids,outer_id"
+    };
+    $.post("/rest", {method:"taobao.items.onsale.get",options:options }, function (data) {
+        var d = $.parseJSON(data);
+        MTemplate("#content", d.items_onsale_get_response.items.item);
+    })
 
-         /* var source   = $("#entry-template").html();
-          var template = Handlebars.compile(source);
-          var context = data;
-          var html    = template(context);
-          $("#entry-template").html(html);*/
-      })
-  </script>
+
+</script>
 
 </body>
 </html>
