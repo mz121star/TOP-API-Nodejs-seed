@@ -16,7 +16,8 @@ exports.index = function (req, res) {
 
 
     res.render('index', {
-        app_loginurl:config.ContainerUrl()
+        app_loginurl:config.ContainerUrl(),
+        AppKey:config.AppKey
     })
 
 

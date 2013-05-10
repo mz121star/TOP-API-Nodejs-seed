@@ -5,7 +5,9 @@ exports.index = function (req, res) {
     var method=req.body.method;
     var options=req.body.options;
     TopAPI.Execute(method, options, function (data) {
-            res.contentType="application/json";
+        res.set({
+            'Content-Type': 'application/json'
+        });
             res.send(data);
         });
  /*   TopAPI.Execute("taobao.items.onsale.get",

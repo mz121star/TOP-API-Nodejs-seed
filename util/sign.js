@@ -2,7 +2,7 @@ var crypto = require('crypto');
 var config = require('./../appconfig').Config;
 
 /**
- * Sign taobao api`.
+ * Sign taobao api for JSSDK`.
  *
  * @param {appkey} Key
  * @param {appsecret} Secret

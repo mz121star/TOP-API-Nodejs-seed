@@ -3,7 +3,6 @@
 <head>
     <title>{{title}}</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <!--<script type="text/javascript" src="js/handlebars.js"></script>-->
     <style>
         .template_content {
             display: none
@@ -49,13 +48,15 @@
         $(ele).html(result);
         $(ele).css("display", "block");
     }
-    var options = {fields: "approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_time,price,has_discount,has_invoice,has_warranty,has_showcase, modified,delist_time,postage_id,seller_cids,outer_id"
-    };
-    $.post("/rest", {method:"taobao.items.onsale.get",options:options }, function (data) {
-        var d = $.parseJSON(data);
-        MTemplate("#content", d.items_onsale_get_response.items.item);
+    $(function () {
+        var options = {
+            fields:"approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_time,price,has_discount,has_invoice,has_warranty,has_showcase, modified,delist_time,postage_id,seller_cids,outer_id"
+        };
+        $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {
+            var d = data;
+            MTemplate("#content", d.items_onsale_get_response.items.item);
+        });
     })
-
 
 </script>
 

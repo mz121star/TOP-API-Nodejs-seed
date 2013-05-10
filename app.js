@@ -4,8 +4,6 @@
 
 var express = require('express')
     , routes = require('./routes')
-    , user = require('./routes/user')
-    , rest = require('./routes/rest')
     , http = require('http')
      ,SDK=require('./SDK/index')
     , path = require('path');
@@ -36,7 +34,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 app.get('/success',routes.successRoute.index)
 app.get('/main',routes.main.index)
 app.post('/rest', SDK.index);
