@@ -1,3 +1,7 @@
-启动代码前需要先修改appconfig中的值
+淘宝开放平台API调用NodeJS实现
 
-运行 grunt  进行测试，测试js文件放在test目录中即可
+
+
+启动代码前需要先修改appconfig中的值,配置其中的appkey和appsecret.
+
+运行 grunt test 进行测试，测试js文件放在test目录中即可
