@@ -1,7 +1,6 @@
+# [TOP-Nodejs-seed](https://github.com/mz121star/taobao) #
 
-  # TOP-Nodejs-seed #
-
-  ##  [淘宝开放平台](http://open.taobao.com/index.htm "淘宝开放平台TOP")API调用Nodejs版本实现  ##
+##  [淘宝开放平台](http://open.taobao.com/index.htm "淘宝开放平台TOP")API调用Nodejs版本实现  ##
 
 淘宝开放平台（Taobao Open Platform以下简称TOP）API调用方式可以通过[此处](http://open.taobao.com/doc/detail.htm?spm=0.0.0.0.XtOdmR&id=111)查看。
 
@@ -58,7 +57,9 @@
   程序登陆页为index。
 
   登录成功后会回调到/success处理（此处为你在开发中心配置的回调地址）。在此处理中需要做如下判断。
-  将成功验证的客户端session分配到cookie中，然后将页面跳转向**/main**(具体功能)页面
+  将成功验证的客户端session分配到cookie中，然后将页面跳转向**/main**(具体功能)页面.
+
+
 > if (TopHelper.VerifyTopResponse(qstring.top_parameters, qstring.top_session, qstring.top_sign, config.AppKey, config.AppSecret)){
 >
 >             var nick=TopHelper.GetParameters(qstring.top_parameters,"visitor_nick");
