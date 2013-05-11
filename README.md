@@ -1,5 +1,4 @@
 
-
 ##  [淘宝开放平台](http://open.taobao.com/index.htm "淘宝开放平台TOP")API调用Nodejs版本实现  ##
 
 淘宝开放平台（Taobao Open Platform以下简称TOP）API调用方式可以通过[此处](http://open.taobao.com/doc/detail.htm?spm=0.0.0.0.XtOdmR&id=111)查看。
@@ -60,7 +59,7 @@
   将成功验证的客户端session分配到cookie中，然后将页面跳转向**/main**(具体功能)页面.
 
 
-> if (TopHelper.VerifyTopResponse(qstring.top_parameters, qstring.top_session, qstring.top_sign, config.AppKey, config.AppSecret)){
+>          if (TopHelper.VerifyTopResponse(qstring.top_parameters, qstring.top_session, qstring.top_sign, config.AppKey, config.AppSecret)){
 >
 >             var nick=TopHelper.GetParameters(qstring.top_parameters,"visitor_nick");
 >             res.cookie(nick,qstring.top_session);
@@ -84,9 +83,9 @@
 
 ## 如何利用jquery调用API？ ##
 
-   和上面大体相同，你可以通过如下方式。
+   和上面大体相同，你可以通过如下方式
    
-> $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {}）
+>       $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {}）
  
 ##API测试工具
    登录后访问/apitest，可以进入API测试工具
