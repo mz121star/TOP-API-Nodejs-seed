@@ -1,6 +1,5 @@
 
 
-
 ##  [淘宝开放平台](http://open.taobao.com/index.htm "淘宝开放平台TOP")API调用Nodejs版本实现  ##
 
 淘宝开放平台（Taobao Open Platform以下简称TOP）API调用方式可以通过[此处](http://open.taobao.com/doc/detail.htm?spm=0.0.0.0.XtOdmR&id=111)查看。
@@ -84,6 +83,7 @@
 >      /*API需要传入的参数
 
 ## 如何利用jquery调用API？ ##
+
    和上面大体相同，你可以通过如下方式。
    
 > $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {}）
