@@ -13,7 +13,7 @@
 
 1，获得代码
 
-> `https://github.com/mz121star/taobao.git`
+> `git clone https://github.com/mz121star/taobao.git`
 
 2，进入项目目录，执行如下命令安装项目的依赖包
 > `npm install`
