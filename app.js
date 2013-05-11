@@ -9,6 +9,7 @@ var express = require('express')
     , path = require('path');
 routes.successRoute=require('./routes/success');
 routes.main=require('./routes/main');
+routes.apitest=require('./routes/apitest');
 
 var app = express();
 
@@ -34,8 +35,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/success',routes.successRoute.index)
-app.get('/main',routes.main.index)
+app.get('/success',routes.successRoute.index);
+app.get('/main',routes.main.index);
+app.get('/apitest',routes.apitest.index)
 app.post('/rest', SDK.index);
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API测试工具</title>
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <style>
+
+        textarea {
+            width: 500px;
+            height: 100px
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <label for="apiname">调用API名称：</label><input id="apiname" type="text" style="width: 500px"/>例如:taobao.user.seller.get<br>
+    <label for="apiparams">调用API参数：</label><textarea id="apiparams"></textarea>数据格式必须为<em>{"key":"value"}</em>，属性和值必须都用双引号，否则会调用失败<br>
+    <input type="button" id="excute" value="调用" style="width: 100px; height: 50px;display: inline-block"/><br>
+    <label for="result">调用返回结果</label> <textarea id="result"></textarea>
+</div>
+<script>
+    $(function () {
+        $("#excute").on('click', function () {
+            var apiname = $("#apiname").val()||"";
+            var options = $("#apiparams")[0].value||"{}";
+            $.ajax({
+                url: "/rest",
+                data: {method: apiname, options: JSON.parse(options) },
+                type:"post",
+                cache:false
+            }).done(function (data) {
+                        if (console.log) console.log(data);
+                        $("#result")[0].value=JSON.stringify(data);
+                    });
+        })
+    });
+
+</script>
+
+</body>
+</html>

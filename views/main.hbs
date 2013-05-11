@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>{{title}}</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <style>
         .template_content {
             display: none
@@ -16,10 +16,14 @@
     </style>
 </head>
 <body>
-
+<div><a href="/apitest" target="_blank">api测试工具</a></div>
+<div id="userinfo" class="template_content">
+    <span>欢迎您：[nick], 好评率:[seller_credit.good_num]</span>
+    <img src="[avatar]" alt="头像"/>
+</div>
 <div id="content" class="template_content">
     <div class='item'>
-        <em>[title]</a></em>
+        <em>[title]</em>
         <img width='100' height='100' src='[pic_url]'/>
         <a href="#">[num_iid]</a>
     </div>
@@ -28,33 +32,70 @@
 <script type="text/javascript">
 
     var MTemplate = function (ele, data) {
-        var matchkey = /\[[A-Za-z0-9_-]+\]/gmi;
-        var html = $(ele).html(), _html;
-        var r = html.match(matchkey);
-        var result = "";
-        $.each(data, function (index, item) {
-            var _temp = item, flag = true;
+        var isarray = $.isArray(data),
+                matchkey = /\[[A-Za-z0-9\_\-\.]+\]/gmi,
+                html = $(ele).html(), _html,
+                r = html.match(matchkey),
+                result = "",
+
+                findvalue = function (data, key) {
+                    var keys = key.split('.'), _data = data;
+                    if ($.isArray(keys)) {
+                        $.each(keys, function (i, o) {
+                            _data = _data[o]
+                        })
+                        return _data;
+                    }
+                    else
+                       return data[key];
+
+                };
+        if (isarray) {
+            $.each(data, function (index, item) {
+                var _temp = item,flag = true;
+                $.each(r, function (i, o) {
+                    var _key = o.replace("[", "").replace("]", "");
+                    if (flag)
+                        _html = html.replace(o, findvalue(_temp, _key));
+                    else
+                        _html = _html.replace(o, findvalue(_temp, _key));
+                    flag = false;
+                })
+
+                result += _html;
+            })
+        }
+        else {
+           var flag = true;
             $.each(r, function (i, o) {
                 var _key = o.replace("[", "").replace("]", "");
                 if (flag)
-                    _html = html.replace(o, _temp[_key]);
+                    _html = html.replace(o, findvalue(data, _key));
                 else
-                    _html = _html.replace(o, _temp[_key]);
+                    _html = _html.replace(o, findvalue(data, _key));
                 flag = false;
             })
 
             result += _html;
-        })
+        }
         $(ele).html(result);
         $(ele).css("display", "block");
     }
     $(function () {
-        var options = {
-            fields:"approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_time,price,has_discount,has_invoice,has_warranty,has_showcase, modified,delist_time,postage_id,seller_cids,outer_id"
+        var onsaleoptions = {
+            fields: "approve_status,num_iid,title,nick,type,cid,pic_url,num,props,valid_thru, list_time,price,has_discount,has_invoice,has_warranty,has_showcase, modified,delist_time,postage_id,seller_cids,outer_id"
         };
-        $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {
+        var salerinfo = {
+            "fields": "user_id,nick,sex,seller_credit,type,has_more_pic,item_img_num,item_img_size,prop_img_num,prop_img_size,auto_repost,promoted_type,status,alipay_bind,consumer_protection,avatar,liangpin,sign_food_seller_promise,has_shop,is_lightning_consignment,has_sub_stock,is_golden_seller,vip_info,magazine_subscribe,vertical_market,online_gaming"
+        }
+        $.post("/rest", {method: "taobao.items.onsale.get", options: onsaleoptions }, function (data) {
             var d = data;
             MTemplate("#content", d.items_onsale_get_response.items.item);
+        });
+
+        $.post("/rest", {method: "taobao.user.seller.get", options: salerinfo }, function (data) {
+            var d = data;
+            MTemplate("#userinfo", d.user_seller_get_response.user);
         });
     })
 

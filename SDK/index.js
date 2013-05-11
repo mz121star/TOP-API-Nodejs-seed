@@ -2,8 +2,8 @@ var TopHelper = require("../util/TopHelper"),
     _ = require("underscore"),
     TopAPI = require("../util/TopAPI");
 exports.index = function (req, res) {
-    var method=req.body.method;
-    var options=req.body.options;
+    var method=req.body.method||{};
+    var options=req.body.options||{};
     TopAPI.Execute(method, options, function (data) {
         res.set({
             'Content-Type': 'application/json'

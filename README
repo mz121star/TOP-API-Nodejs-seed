@@ -1,3 +1,5 @@
+
+
 # [TOP-Nodejs-seed](https://github.com/mz121star/taobao) #
 
 ##  [淘宝开放平台](http://open.taobao.com/index.htm "淘宝开放平台TOP")API调用Nodejs版本实现  ##
@@ -86,3 +88,5 @@
    和上面大体相同，你可以通过如下方式。
    > $.post("/rest", {method:"taobao.items.onsale.get", options:options }, function (data) {}）
  
+##API测试工具
+   登录后访问/apitest，可以进入API测试工具
