@@ -7,26 +7,36 @@
         .template_content {
             display: none
         }
-
+        #main{margin: 0 auto;
+            height: 1000px;
+            width: 600px;}
+        #content{
+            width: 600px;
+        }
         #content .item {
             float: left;
             margin: 3px;
             background-color: #dddddd
         }
+
+        .item a em{float: left}
+        .item a img{float: left;clear: left}
     </style>
 </head>
 <body>
 <div><a href="/apitest" target="_blank">api测试工具</a></div>
+<div id="main">
 <div id="userinfo" class="template_content">
     <span>欢迎您：[nick], 好评率:[seller_credit.good_num]</span>
     <img src="[avatar]" alt="头像"/>
 </div>
 <div id="content" class="template_content">
     <div class='item'>
-        <em>[title]</em>
-        <img width='100' height='100' src='[pic_url]'/>
-        <a href="#">[num_iid]</a>
+
+        <a href="# [num_iid]"><em>[title]</em> <img width='100' height='100' src='[pic_url]'/></a>
+
     </div>
+</div>
 </div>
 
 <script type="text/javascript">
